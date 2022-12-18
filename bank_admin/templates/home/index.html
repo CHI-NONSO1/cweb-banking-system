@@ -1,0 +1,131 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cweb-Pay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+<link rel="stylesheet" href="{% static 'home/home.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+   
+  </div>
+  <div class="register_login">
+   <div class="register">
+    <a class="link__item" href="{% url 'bank_admin:customer-register' %}">SignUp</a>
+   </div>
+   <div class="login">
+    <a class="link__item" href="{% url 'bank_admin:customer-login' %}">Login</a>
+   </div>
+  </div>
+</header>
+<main class="container">
+ 
+    <div class="description-container-flex">
+   
+      
+      <div class="sub-description-details-1">
+        <h3 > CwebPay is a bank management system with 4 different admin interface which are</h3>
+        <ol class="ol-items">
+          <li><strong>Bank Admin</strong> </li>
+          <li><strong>Teller Admins</strong></li>
+          <li><strong>Front Desk Admins</strong></li>
+          <li><strong>Customers Admin</strong></li>
+        </ol>
+      </div>
+      <div class="sub-description-details">
+        <h3>Bank Admin has the responsibility to manage the Tellers which are to:</h3>
+        <ol class="ol-items">
+          <li>Register Tellers</li>
+          <li>Fund Teller acount</li>
+          <li>View all Transaction History and by each Teller</li>
+          <li>Delete or Block Teller</li>
+        </ol>
+      </div>
+      <div class="sub-description-details">
+        <h3>Teller Admins deals with transactions only which are to:</h3>
+        <ol class="ol-items">
+          <li>Receive Cash from Customers and credit their account while debiting his or her own account</li>
+          <li>Pay Customers and debit their account while crediting his or her own teller account</li>
+          <li>All withdrawal charges are credited to bank admin who fund Tellers account </li>
+  
+        </ol>
+      </div>
+      <div class="sub-description-details">
+        <h3>Front Desk Admins has deals with the bank customer affairs which are to:</h3>
+        <ol class="ol-items">
+          <li>Register Customer for physical dealings or </li>
+          <li>Update their account with provided KYC documents</li>
+          <li>View customer Transaction history for any customer complain </li>
+          <li>Delete or Block a customer</li>
+        </ol>
+      </div>
+      <div class="sub-description-details">
+        <h3>Customer Admins area where they:</h3>
+        <ol class="ol-items">
+          <li>Transfer between customers</li>
+          <li>View their transaction history</li>
+          <li>Upload KYC documents</li>
+  
+        </ol>
+      </div>
+      <div class="sub-description-details">
+        <h3>Developed With:</h3>
+        <ol class="ol-items">
+          <li>Python</li>
+          <li>Django</li>
+          <li>MYSQL</li>
+        </ol>
+      </div>
+  
+    </div>
+  <div class="weoffer">
+    <h1 class="heading">
+      Here, you can:
+    </h1>
+
+    <p>
+      <img src="../../../../../media/images/credit-card.png" style="width: 4%;" class="logo__img" />
+      <span>Pay bills . . . just kidding</span> 
+    </p>
+    <p> *Buy things online . . . just kidding &#128521</p>
+    <p> *Save and manage your fund. . . just kidding again &#129297</p>
+    <p> *Transfer between customers/users. . . for real &#9786</p>
+    <p><a class="link__page" href="{% url 'bank_admin:customer-register' %}">Sign up here to discover how it works&#128524</a> </p>
+    <p>
+      <a class="link__page" href="{% url 'bank_admin:customer-login' %}"> Or Login here to see it in action!&#128524</a>
+    </p>
+    <div>
+      <p>
+        <a class="chatup" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+          Leave a message  here after registering to get your signup bonus for testing things out &#128524
+        </a> 
+      </p>
+    </div>
+</div>
+  
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
