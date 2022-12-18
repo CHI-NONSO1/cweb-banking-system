@@ -1,0 +1,127 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teller Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'teller_transfer/transfer-customer.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{T_firstname}} {{T_lastname}}</div>
+    <div>bal: N{{T_balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:teller-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{T_firstname}} {{T_lastname}}</div>
+  
+    <div>bal: N{{T_balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+ 
+  <div class="admin-items-box">
+    <div class="dashboard_link-wrap">
+      <a href="{% url 'bank_admin:teller-admin' token %}" class="dashboard__link">Dashboard</a>
+    </div>
+       <div><h2  class="status">Status: {{data}}</h2></div>
+      <div> <h2>Transaction Details:</h2></div>
+    <div class="table-items">
+      {% if charge %}
+      <table>
+        <thead>
+ 
+          <tr>
+            <th class="name">Fullname</th>   <td>{{name}}</td>
+          </tr>
+          <tr>
+            <th>Account No</th> <td>{{customerNum}}</td>
+          </tr>
+          
+          <tr>
+            <th>Wdth Amount</th> <td>{{amount}}</td>
+          </tr>
+          <tr>
+            <th>Charges</th> <td>{{charge}}</td>
+          </tr>
+          <tr>
+            <th>Teller ID</th>  <td>{{tellerId}}</td>
+          </tr>
+          <tr>
+            <th>Transaction Ref</th>  <td>{{T_Ref}}</td>
+          </tr>
+
+            <tr>
+            <th>Date Created</th>   <td>{{createdAt}}</td>
+          </tr>
+        </thead>
+      </table>
+      {% else%}
+      <table>
+        <thead>
+        
+          <tr>
+            <th class="name">Fullname</th>   <td>{{name}}</td>
+          </tr>
+          <tr>
+            <th>Account No</th> <td>{{customerNum}}</td>
+          </tr>
+            <tr>
+            <th>Deposit</th>  <td>N{{amount}}</td>
+          </tr>
+        
+          <tr>
+            <th>Teller ID</th>  <td>{{tellerId}}</td>
+          </tr>
+          <tr>
+            <th>Transaction Ref</th>  <td>{{T_Ref}}</td>
+          </tr>
+
+            <tr>
+            <th>Date Created</th>   <td>{{createdAt}}</td>
+          </tr>
+        </thead>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
