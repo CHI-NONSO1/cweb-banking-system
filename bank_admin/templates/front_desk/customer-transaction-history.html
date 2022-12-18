@@ -1,0 +1,111 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Front Desk Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'front_desk/all-customer.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{FrontDeskFirstName}} {{FrontDeskLastName}}</div>
+    
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:front-desk-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{FrontDeskFirstName}} {{FrontDeskLastName}}</div>
+   
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+ 
+  <div class="admin-items-box">
+    <div>
+      <a href="{% url 'bank_admin:front-desk' token %}" class="items-box-link">Dashboard</a>
+    </div>
+    <div> <h4>Customer Transaction History</h4></div>
+    <div class="table-items">
+      
+  <table>
+    <thead>
+      <tr>
+        <th>Fullname</th>
+        <th>Account Number</th>
+        <th>Account ID</th>
+        <th>Deposit</th>
+        <th>Withdrawal</th>
+        <th>Charges</th>
+        <th>Transaction Ref</th>
+        <th>Teller ID</th>
+        <th>Transaction Date</th>
+        <th>Action</th>
+      </tr>
+      <tbody>
+        {% for data in data %}
+        <tr>
+          <td>{{data.fullname}}</td>
+          <td>{{data.phoneno}}</td>
+          <td>{{data.customer_accountid}}</td>
+          <td>N{{data.deposit}}</td>
+          <td>N{{data.withdrawal}}</td>
+          <td>N{{data.charges}}</td>
+          <td>{{data.transaction_ref}}</td>
+          <td>{{data.teller_adminid}}</td>
+          <td>{{data.createdAt}}</td>
+        
+          <td>
+            <button>
+              <!-- <a href="{% url 'bank_admin:customer-action' data.customer_accountid token %}">Ation</a> -->
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </thead>
+  </table>
+</div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+ 
+
+

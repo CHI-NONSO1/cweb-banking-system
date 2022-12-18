@@ -1,0 +1,78 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Front Desk Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'front_desk/update-status.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:front-desk-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+   
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+ 
+  <div class="admin-items-box">
+    <div>
+      <a href="{% url 'bank_admin:front-desk' token %}" class="items-box-link">Back To Dashboard</a>
+    </div>
+  
+    
+    <div><h4 class="success">Status: {{data}}</h4></div>
+    
+   
+    <div>
+      <div><h4>Updated Fields:</h4></div>
+      <div>City: {{city}}</div>
+      <div>Address: {{address}}</div>
+      <div>Job Title: {{job_title}}</div>
+    </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+

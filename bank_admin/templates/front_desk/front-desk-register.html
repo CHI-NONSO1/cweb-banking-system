@@ -1,0 +1,129 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Front Desk Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'front_desk/front-desk-register.css' %}"> 
+</head>
+<body>
+  <div class="front__desk__form-container">
+    <form  action= "{% url 'bank_admin:front-desk-register'  %}" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="error">
+          {%  if error_message %}
+          <p>
+            <strong class="error_message">
+            {{ error_message }}
+          </strong>
+          </p>
+          
+          {% endif %}
+        </div>
+
+        <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                placeholder="First Name"
+                class="form-control"
+                value= ''
+                
+                />
+              <label for="firstname" class="labText">First Name</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                placeholder="Last Name"
+                class="form-control"
+                value= ''
+                
+                />
+              <label for="lastname" class="labText">Last Name</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autoComplete="none"
+                placeholder="Password"
+                class="form-control"
+                value= ''
+               
+                 />
+              <label for="password" class="labText">Password</label>
+            </div>
+            <div class="help_parent"> <span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="password"
+                name="confirm_password"
+                autoComplete="none"
+                id="confirmpassword"
+                placeholder="Confirm Password"
+                class="form-control"
+                value= ''
+              
+                />
+              <label for="confirmpassword" class="labText">Confirm Password</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                class="form-control"
+                value= ''
+              
+                />
+              <label for="email" class="labText">Email</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                name="phoneno"
+                id="phoneno"
+                placeholder="Phone Number"
+                class="form-control"
+                value=''
+               
+                />
+              <label for="phoneno" class="labText">Phone Number</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+        <div>
+          <button type="submit" class="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>

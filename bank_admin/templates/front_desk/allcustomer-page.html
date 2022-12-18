@@ -1,0 +1,126 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Front Desk Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'front_desk/all-customer.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{FrontDeskFirstName}} {{FrontDeskLastName}}</div>
+    
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:front-desk-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{FrontDeskFirstName}} {{FrontDeskLastName}}</div>
+   
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+ 
+  <div class="admin-items-box">
+    <div>
+   
+      <a href="{% url 'bank_admin:front-desk' token %}" class="items-box-link">Dashboard</a>
+    
+    </div>
+  
+    <div class="table-items">
+  <table>
+    <thead>
+      <tr>
+        <th class="name">Firstname</th>
+        <th class="name">Lastname</th>
+        <th class="name">Account Number</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Account ID</th>
+        <th>Picture</th>
+        <th>Date Created</th>
+        {% if updatedAt %}
+        <th>Date Updated</th>
+        {% endif %}
+        <th>Email</th>
+        {% if imageKYC %}
+        <th>KYC</th>
+        {% endif %}
+        <th class="name">Balance</th>
+        <th class="name">Update</th>
+      </tr>
+      <tbody>
+        {% for data in data %}
+        <tr>
+          <td class="name">{{data.firstname}}</td>
+          <td class="name">{{data.lastname}}</td>
+          <td class="name">{{data.phoneno}}</td>
+          <td>{{data.address}}</td>
+          <td>{{data.city}}</td>
+          <td>{{data.customerid}}</td>
+          <td class="name">
+            <img src="../../../../../media/{{data.image}}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+          </td>
+          <td>{{data.createdAt}}</td>
+          {% if updatedAt %}
+          <td>{{data.updatedAt}}</td>
+          {% endif %}
+          <td>{{data.email}}</td>
+          {% if imageKYC %}
+          <td>
+            <img src="../../../../../media/{{data.imageKYC}}" class="img-responsive" style="width: 6%; float: left; margin-right: 10px;" />
+          </td>
+          {% endif %}
+          <td class="name">N{{data.balance}}</td>
+        
+          <td class="name">
+            <button>
+              <a href="{% url 'bank_admin:customer-action' data.customer_accountid token %}">Action</a>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </thead>
+  </table>
+</div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
