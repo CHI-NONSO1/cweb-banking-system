@@ -1,0 +1,180 @@
+ 
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teller Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'tellers/teller-admin-account-detail.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:teller-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+  
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+ 
+  <div class="admin-items-box">
+    <div class="form-header">
+      <h3>Teller Admin Account Update</h3>
+    </div>
+    <div class="customer__form-container">
+
+  
+      <form  action= "{% url 'bank_admin:teller-admin-account-update'  %}" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="error">
+          {%  if error_message %}
+          <p>
+            <strong class="error_message">
+            {{ error_message }}
+          </strong>
+          </p>
+          
+          {% endif %}
+        </div>
+
+        <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="City"
+                class="form-control"
+                value= ''
+                
+                />
+              <label for="city" class="labText">City</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Address"
+                class="form-control"
+                value= ''
+                
+                />
+              <label for="address" class="labText">Address</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="text"
+                id="jobtitle"
+                name="jobtitle"
+                
+                placeholder="Job Title"
+                class="form-control"
+                value= ''
+               
+                 />
+              <label for="jobtitle" class="labText">Job Title</label>
+            </div>
+            <div class="help_parent"> <span class="help-block"></span></div>
+          </div>
+  
+      
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="hidden"
+                name="email"
+                id="email"
+                value= {{email}}
+                />
+            </div>
+          </div>
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="hidden"
+                name="token"
+                id="email"
+                value= {{token}}
+                />
+            </div>
+          </div>
+          <!-- <div class="form-group-parent-file">
+            <div class="fileBtn_parent">
+              <input  type="file" name='file' id="imgprev" /> 
+              </div>
+              <div class="img_parent">
+              <img
+              class="img_content"
+              name="image"
+              alt='avatarimg' 
+              thumbnail
+              src="URL.createObjectURL(imageprev)"
+              id="profileDisplay" />
+              
+              </div>
+            </div> -->
+
+        <div>
+          <button type="submit" class="submit">Send</button>
+        </div>
+    </form>
+</div>
+  </div>
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
