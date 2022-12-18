@@ -1,0 +1,161 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+body {
+  background: linear-gradient(
+    to right top,
+    #49a09d ,
+    #5f2c82 ,
+    #a6ffcb ,
+    #f8cdda ,
+    #3b4a4a ,
+    #005c73 ,
+    #dbd4b4 ,
+    #bfe9ff ,
+    #26a0da ,
+    #1488cc ,
+    #2b32b2 
+  
+  );
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.login__wrapper{
+  width: 30%;
+  height: 90%;
+  margin-top: 8%;
+  margin-left: 4%;
+  box-shadow: 0 10px 50px #000;
+  background: linear-gradient(
+    to right top,
+    #49a09d ,
+    #5f2c82 ,
+    #a6ffcb ,
+    #f8cdda ,
+    #3b4a4a ,
+    #005c73 ,
+    #dbd4b4 ,
+    #bfe9ff ,
+    #26a0da ,
+    #1488cc ,
+    #2b32b2 
+  
+  );
+  display: block;
+  border-radius: 15px;
+}
+@media screen and (max-width: 820px) {
+  .login__wrapper{
+    width: 90%;
+    height: 90%;
+    margin-top: 40%;
+    margin-left: 4%;
+    box-shadow: 0 10px 50px #000;
+    
+  }
+}
+.form-group-parent2{
+  width: 95%;
+  height: 50%;
+  margin-bottom: 5%;
+}
+.labText {
+  font-size: 110%;
+  font-weight: 600;
+  margin-left: 2%;
+  margin-top: 0.5%;
+  display: block;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.form-control {
+  width: 97%;
+  height: 97%;
+  padding: 1.5%;
+  border: none;
+  outline: none;
+  border-radius: 1%;
+  border-bottom: 3px solid transparent;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #000;
+  font-size: 110%;
+  font-weight: 600;
+}
+
+
+.form-control:focus:invalid {
+  border-bottom: 3px solid orange;
+}
+
+.form-control:focus {
+  box-shadow: 0 10px 50px #000;
+  border-bottom: 3px solid lightgreen;
+}
+
+.form-control:placeholder-shown + .labText {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2.4rem);
+}
+
+.input_parent {
+  width: 95%;
+  height: 95%;
+  margin-left: 5%;
+}
+
+.help_parent {
+  width: 95%;
+  height: 95%;
+  margin: 5%;
+}
+
+.help-block {
+  width: 100%;
+  height: 100%;
+  color: red;
+  font-size: 120%;
+}
+
+.submit__wrap{
+  width: 100%;
+  height: 30%;
+
+}
+.submit{
+  width: 30%;
+  height: 95%;
+  padding: 4%;
+  border-radius: 5px;
+  color: #fff;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 4%;
+  background: blue;
+ cursor: pointer;
+  box-shadow: 0 10px 50px #000;
+}
+.submit:hover{
+opacity: .5;
+border: 3px solid darkgray;
+}
+
+.error{
+
+  margin-bottom: 8%;
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error_message{
+color: red;
+}
