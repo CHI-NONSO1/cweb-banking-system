@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/transaction-history.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="logout__link" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="admin-items-box">
+      <div class="dashboard_link-wrap">
+        <a href="{% url 'bank_admin:bank-admin' token %}" class="dashboard__link">Dashboard</a>
+      </div>
+      <div class="teller-balance">
+    
+      <h1>All Transactions:</h1>
+    </div>
+      <div class="table-items">
+        <table>
+          <thead>
+            <tr>
+             
+              <th class="nameAcc" >Fullname</th>
+              <th  class="nameAcc" >Account No</th>
+              <th>Teller ID</th>
+              <th  class="name">Deposit</th>
+              <th  class="name">Withdrawal</th>
+              <th  class="name">Chargers</th>
+              <th>Transaction Ref</th>
+              <th>Date Created</th>
+              <th>Customer ID</th>
+              <th  class="name">View</th>
+
+
+            </tr>
+            <tbody>
+              {% for data in data %}
+              <tr>
+             
+                <td  class="nameAcc" >{{data.fullname}}</td>
+                <td class="nameAcc" >{{data.phoneno}}</td>
+                <td>{{data.teller_adminid}}</td>
+                <td  class="name">{{data.deposit}}</td>
+                <td  class="name">{{data.withdrawal}}</td>
+                <td  class="name">{{data.charges}}</td>
+                <td>{{data.transaction_ref}}</td>
+                <td>{{data.createdAt}}</td>
+                <td>{{data.customer_accountid}}</td>
+                
+                <td  class="name">
+                  <button>
+                    <a href="{% url 'bank_admin:transaction-detail' data.transaction_ref token %}">View</a>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+

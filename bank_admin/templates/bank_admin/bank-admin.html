@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/bank_admin.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+
+    <div class="admin-items-box">
+      <a href="{% url 'bank_admin:add-fund-form' token %}" class="items-box-link">Add Fund</a>
+    </div>
+
+    <div class="admin-items-box">
+      <a href="{% url 'bank_admin:teller-account' token %}" class="items-box-link">Transfer</a>
+    </div>
+
+    
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:bank-admin-account-detail' token %}" class="items-box-link">Update Account</a>
+  </div>
+
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:get-teller-account' token %}" class="items-box-link">Get Teller Info</a>
+  </div>
+
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:get-all-tellers' token %}" class="items-box-link">Get All Teller</a>
+  </div>
+
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:get-teller-number' token %}" class="items-box-link">Transaction History</a>
+  </div>
+
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:transaction-history' token %}" class="items-box-link">All Transaction History</a>
+  </div>
+
+  <div class="admin-items-box">
+    <a href="{% url 'bank_admin:admin-transaction-history' token %}" class="items-box-link">Admin Transaction History</a>
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+

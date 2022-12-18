@@ -1,0 +1,69 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/bank-admin-login.css' %}"> 
+</head>
+<body>
+  <div class="admin__login--wrapper">
+    <form  action= "{% url 'bank_admin:login-admin'  %}" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="error">
+          {%  if error_message %}
+          <p>
+            <strong class="error_message">
+            {{ error_message }}
+          </strong>
+          </p>
+          
+          {% endif %}
+        </div>
+  
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                class="form-control"
+                value= ''
+              
+                />
+              <label for="email" class="labText">Email</label>
+            </div>
+            <div class="help_parent"><span class="help-block"></span></div>
+          </div>
+  
+
+          
+          <div class="form-group-parent2">
+            <div class="input_parent">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autoComplete="none"
+                placeholder="Password"
+                class="form-control"
+                value= ''
+               
+                 />
+              <label for="password" class="labText">Password</label>
+            </div>
+            <div class="help_parent"> <span class="help-block"></span></div>
+          </div>
+  
+  
+        <div class="submit__wrap">
+          <button type="submit" class="submit">Login</button>
+        </div>
+      </div>
+    </form>
+</body>
+</html>

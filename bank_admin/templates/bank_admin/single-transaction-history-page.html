@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/single-transaction-history-page.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{adminchargeinflow}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="logout__link" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{adminchargeinflow}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="admin-items-box">
+      <div class="dashboard_link-wrap">
+        <a href="{% url 'bank_admin:bank-admin' token %}" class="dashboard__link">Dashboard</a>
+      </div>
+      <div class="teller-balance">
+      
+      <h1>Transaction Details:</h1>
+    </div>
+      <div class="table-items">
+        <table>
+          <thead>
+            <tr>
+              <th class="name">Fullname</th>   <td>{{fullname}}</td>
+            </tr>
+            <tr>
+              <th>Account No</th> <td>{{phoneno}}</td>
+            </tr>
+              <tr>
+              <th>Deposit</th>  <td>{{deposit}}</td>
+            </tr>
+            <tr>
+              <th>Withdrawal</th> <td>{{withdrawal}}</td>
+            </tr>
+            <tr>
+              <th>Charges</th> <td>{{charges}}</td>
+            </tr>
+            <tr>
+              <th>Customer ID</th>  <td>{{customerid}}</td>
+            </tr>
+            <tr>
+              <th>Account ID</th>  <td>{{tellerid}}</td>
+            </tr>
+            <tr>
+              <th>Transaction Ref</th>  <td>{{T_ref}}</td>
+            </tr>
+
+              <tr>
+              <th>Date Created</th>   <td>{{createdAt}}</td>
+            </tr>
+          
+              <tr>
+              <th>Action</th>   <td>
+                <button>
+                  <a href="{% url 'bank_admin:delete-transaction' T_ref token %}">Delete Transaction</a>
+                </button>
+              </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+ 
+ 
+
+
+

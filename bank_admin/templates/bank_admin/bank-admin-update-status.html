@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/bank-admin-update-status.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="logout__link" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="admin-items-box">
+      <div class="dashboard_link-wrap">
+        <a href="{% url 'bank_admin:bank-admin' token %}" class="dashboard__link">Dashboard</a>
+      </div>
+      <div class="teller-balance">
+      <h1 class="success">Status: {{data}}</h1>
+      <h1>Updated Fields:</h1>
+    </div>
+      <div class="table-items">
+        <table>
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Address</th>
+              <th>Job Title</th>
+              <th>Print</th>
+             
+
+          
+            </tr>
+            <tbody>
+              <tr>
+                <td>{{city}}</td>
+                <td>{{address}}</td>
+                <td>{{job_title}}</td>
+                
+              
+
+                <td>
+                  <button>
+                   
+                  </button>
+                </td>
+              </tr>
+            
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+

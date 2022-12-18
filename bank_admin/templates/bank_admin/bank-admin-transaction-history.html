@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/bank-admin-transfer-history.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="logout__link" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="admin-items-box">
+      <div class="dashboard_link-wrap">
+        <a href="{% url 'bank_admin:bank-admin' token %}" class="dashboard__link">Dashboard</a>
+      </div>
+      <div class="teller-balance">
+    
+      <h1>All Admin Transfers:</h1>
+    </div>
+      <div class="table-items">
+        <table>
+          <thead>
+            <tr>
+             
+              <th class="name">Fullname</th>
+              <th class="phoneno">Account No</th>
+              <th class="tellerid">Teller ID</th>
+              <th class="amount">Amount</th>
+          
+              <th class="tref">Transaction Ref</th>
+              <th class="dateitem">Date Created</th>
+              <th class="adminid">Admin ID</th>
+              <th class="view">View</th>
+
+
+            </tr>
+            <tbody>
+              {% for data in data %}
+              <tr>
+             
+                <td class="name">{{data.fullname}}</td>
+                <td class="phoneno">{{data.phoneno}}</td>
+                <td class="tellerid">{{data.teller_adminid}}</td>
+                <td class="amount">N{{data.balance}}</td>
+              
+                <td class="tref">{{data.transaction_ref}}</td>
+                <td class="dateitem">{{data.createdAt}}</td>
+                <td class="adminid">{{data.bank_adminid}}</td>
+                
+                <td class="view">
+                  <button>
+                    <a href="{% url 'bank_admin:admin-transfer-detail' data.transaction_ref token %}">View</a>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+

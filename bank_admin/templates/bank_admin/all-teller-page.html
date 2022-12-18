@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'bank_admin/all-teller-page.css' %}"> 
+</head>
+<body>
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}}</div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="logout__link" href="{% url 'bank_admin:admin-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{firstname}} {{lastname}}</div>
+    <div>Charge Inflow:  N{{charges}} </div>
+    <div>bal: N{{balance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="admin-items-box">
+      <div class="dashboard_link-wrap">
+        <a href="{% url 'bank_admin:bank-admin' token %}" class="dashboard__link">Dashboard</a>
+      </div>
+      <div class="teller-balance">
+    
+      <h1>Tellers:</h1>
+    </div>
+      <div class="table-items">
+        <table>
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Teller ID</th>
+              <th>Acoount No</th>
+              <th>City</th>
+              <th>Address</th>
+              <th>Email</th>
+              <th>Date Created</th>
+              <th>Balance</th>
+              <th>View</th>
+
+            </tr>
+            <tbody>
+              {% for data in data %}
+              <tr>
+                <td>
+                  <img src="../../../../../media/{{data.image}}" class="img-responsive" style="width: 6%; float: left; margin-right: 10px;" />
+                </td>
+                <td>{{data.firstname}}</td>
+                <td>{{data.lastname}}</td>
+                <td>{{data.teller_adminid}}</td>
+                <td> {{data.phoneno}}</td>
+                <td>{{data.city}}</td>
+                <td>{{data.address}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.createdAt}}</td>
+                <td>{{data.balance}}</td>
+                <td>
+                  <button>
+                    <a href="{% url 'bank_admin:teller-action' data.teller_adminid token %}">View</a>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
