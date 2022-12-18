@@ -23,7 +23,7 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h&%kx^##10ms7#(q_%(!zzj20fiyo+on!f(sj#yev0&a1ok$l0'
+SECRET_KEY = '-------'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cweb_banking_system',
         'USER': 'root',
-        'PASSWORD': 'Egwuaka1987',
+        'PASSWORD': '------',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
@@ -95,7 +95,7 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'CwebPay$banking_system',
     #     'USER': 'CwebPay',
-    #     'PASSWORD': 'bankcweb',
+    #     'PASSWORD': '---',
     #     'HOST': 'CwebPay.mysql.pythonanywhere-services.com',
     #     'PORT': '3306',
     #     'OPTIONS': {
