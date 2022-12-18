@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'customer_to_customer_transfer/status.css' %}"> 
+</head>
+<body>
+
+
+<header class="header">
+  <div class="site_logo">
+    <a class="logo_link" href="{% url 'bank_admin:index' %}">
+      <img src="../../../../../media/images/credit-card.png" class="logo__img" />
+      Cweb-Pay 
+    </a>
+  </div>
+
+   <div class="greeting">
+    <div>welcome: {{payerFirstName}} {{payerLastName}}</div>
+    <div>Acct Num: {{payerAccNum}} </div>
+    <div>bal: N{{payerBalance}}</div>
+   
+   </div>
+ 
+  <div class="register_login">
+    <div class="logout">
+      <a class="link__item" href="{% url 'bank_admin:customer-logout' token %}">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="greeting-small">
+    <div>welcome: {{payerFirstName}} {{payerLastName}}</div>
+    <div>Acct Num: {{payerAccNum}} </div>
+    <div>bal: N{{payerBalance}}</div>
+   
+   </div>
+  <div class="main-box">
+    {% block content %}
+    <div class="trans-items-box">
+      <div class="dash_link" >
+        <a href="{% url 'bank_admin:dashboard' token %}" class="dashboard_link">Back To Dashboard</a>
+      </div>
+
+      <div>
+        <h4 class="transfer_status">Status: {{data}}</h4>
+        
+      </div>
+
+      <div class="table-items">
+      
+        <table>
+          <thead>
+   
+            <tr class="header-items">
+              <th></th> <td><h4>Withdrawal Details:</h4></td>
+            </tr>
+            <tr>
+              <th class="name">Acc Number</th> <td>{{receiverNum}}</td>
+            </tr>
+            
+            <tr>
+              <th>Wdth Amount</th> <td>N{{amount}}</td>
+            </tr>
+            <tr>
+              <th>Charges</th> <td>{{charge}}</td>
+            </tr>
+            <tr>
+              <th>Receiver's Name</th>  <td>{{name}}</td>
+            </tr>
+            <tr>
+              <th>Sender ID</th>  <td>{{senderId}}</td>
+            </tr>
+            <tr>
+              <th>Transaction Ref</th>  <td>{{T_Ref}}</td>
+            </tr>
+  
+              <tr>
+              <th>Date Created</th>   <td>{{createdAt}}</td>
+            </tr>
+
+
+            <tr class="header-items">
+            
+              <th></th> <td><h4>Transfer Details:</h4></td>
+            </tr>
+
+
+            <tr>
+              <th class="name">Accouunt No</th> <td>{{receiverNum}}</td>
+            </tr>
+            
+            <tr>
+              <th>Transfered Amount</th> <td>{{amount}}</td>
+            </tr>
+            <tr>
+              <th>Sender ID</th> <td>{{senderId}}</td>
+            </tr>
+            <tr>
+              <th>Transaction Ref</th>  <td>{{T_Ref}}</td>
+            </tr>
+  
+              <tr>
+              <th>Date Created</th>   <td>{{createdAt}}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+  </div>
+  {% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="contact__us">
+    <a class="whatsappme" href="https://wa.me/message/Q5U5MFFUW6NVO1">
+      Contact
+    </a>
+  </div>
+  <div class="policy">
+    <p class="site_policy">
+      Site policy is  work in progress
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
